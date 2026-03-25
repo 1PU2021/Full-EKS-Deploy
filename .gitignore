@@ -1,0 +1,28 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.tfplan
+tfplan
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Keys / certs
+*.pem
+*.key
+*.crt
+
+# Node.js
+**/node_modules/
+npm-debug.log*
