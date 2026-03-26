@@ -70,7 +70,7 @@ resource "aws_eks_cluster" "this" {
 }
 
 resource "aws_eks_access_entry" "jenkins" {
-  count = var.jenkins_role_arn == null ? 0 : 1
+  count = var.enable_jenkins_access ? 1 : 0
 
   cluster_name  = aws_eks_cluster.this.name
   principal_arn = var.jenkins_role_arn
@@ -78,7 +78,7 @@ resource "aws_eks_access_entry" "jenkins" {
 }
 
 resource "aws_eks_access_policy_association" "jenkins_cluster_admin" {
-  count = var.jenkins_role_arn == null ? 0 : 1
+  count = var.enable_jenkins_access ? 1 : 0
 
   cluster_name  = aws_eks_cluster.this.name
   principal_arn = var.jenkins_role_arn

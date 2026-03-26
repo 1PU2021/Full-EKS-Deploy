@@ -49,3 +49,9 @@ variable "jenkins_role_arn" {
   type        = string
   default     = null
 }
+
+variable "enable_jenkins_access" {
+  description = "Whether to create EKS access resources for Jenkins"
+  type        = bool
+  default     = false
+}

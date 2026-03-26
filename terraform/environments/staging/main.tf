@@ -36,6 +36,7 @@ module "eks" {
   vpc_id             = module.vpc.vpc_id
   private_subnet_ids = module.vpc.private_subnet_ids
   eks_cluster_sg_id  = module.vpc.eks_cluster_sg_id
+  enable_jenkins_access = var.enable_jenkins
 
   node_desired_size = var.node_desired_size
   node_min_size     = var.node_min_size
