@@ -28,4 +28,4 @@ repository_name = "tc2-prod-node-app"
 
 # Argo CD Git repository configuration
 git_repo_url = "https://github.com/1PU2021/Mock-Tech-Challenge.git"
-git_branch   = "Prod"
+git_branch   = "prod"
