@@ -68,3 +68,23 @@ variable "git_branch" {
   type        = string
   default     = "Prod"
 }
+
+variable "jenkins_ami_id" {
+  description = "AMI ID for Jenkins EC2"
+  type        = string
+}
+
+variable "jenkins_instance_type" {
+  description = "Instance type for Jenkins EC2"
+  type        = string
+}
+
+variable "jenkins_key_name" {
+  description = "Key pair name for Jenkins EC2"
+  type        = string
+}
+
+variable "jenkins_root_volume_size" {
+  description = "Root volume size for Jenkins EC2"
+  type        = number
+}
