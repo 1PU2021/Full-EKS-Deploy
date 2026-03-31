@@ -58,22 +58,13 @@ variable "repository_name" {
   type        = string
 }
 
-variable "jenkins_ami_id" {
-  description = "AMI ID for the Jenkins EC2 instance"
+variable "git_repo_url" {
+  description = "Git repository URL for Argo CD to sync from"
   type        = string
 }
 
-variable "jenkins_instance_type" {
-  description = "Instance type for the Jenkins EC2 instance"
+variable "git_branch" {
+  description = "Git branch for Argo CD to sync from"
   type        = string
-}
-
-variable "jenkins_key_name" {
-  description = "EC2 key pair name for Jenkins SSH access"
-  type        = string
-}
-
-variable "jenkins_root_volume_size" {
-  description = "Root volume size in GB for Jenkins"
-  type        = number
+  default     = "Prod"
 }

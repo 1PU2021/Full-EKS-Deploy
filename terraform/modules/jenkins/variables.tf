@@ -29,3 +29,9 @@ variable "key_name" {
 variable "root_volume_size" {
   type = number
 }
+
+variable "enable_jenkins" {
+  description = "Whether to create the Jenkins EC2 instance"
+  type        = bool
+  default     = true
+}

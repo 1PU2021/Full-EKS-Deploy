@@ -1,4 +1,6 @@
 resource "aws_instance" "this" {
+  count = var.enable_jenkins ? 1 : 0
+
   ami                         = var.ami_id
   instance_type               = var.instance_type
   subnet_id                   = var.subnet_id
