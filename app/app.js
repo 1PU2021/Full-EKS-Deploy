@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello all from Node.js!!!!");
+  res.send("Hello all from Node.js");
 });
 
 app.get("/health", (req, res) => {
