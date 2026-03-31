@@ -29,3 +29,8 @@ repository_name = "tc2-prod-node-app"
 # Argo CD Git repository configuration
 git_repo_url = "https://github.com/1PU2021/Mock-Tech-Challenge.git"
 git_branch   = "prod"
+
+jenkins_ami_id            = "ami-06e3c045d79fd65d9"
+jenkins_instance_type     = "t3.medium"
+jenkins_key_name          = "real-world-sim-key"
+jenkins_root_volume_size  = 20
