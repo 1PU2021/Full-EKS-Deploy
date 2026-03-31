@@ -109,3 +109,17 @@ module "iam" {
   github_branch = "prod"
   github_environment = "prod"
 }
+
+module "jenkins" {
+  source = "../../modules/jenkins"
+
+  enable_jenkins       = var.enable_jenkins
+  environment_name     = var.environment_name
+  ami_id               = var.jenkins_ami_id
+  instance_type        = var.jenkins_instance_type
+  subnet_id            = module.vpc.public_subnet_ids[0]
+  security_group_id    = module.vpc.jenkins_sg_id
+  instance_profile_name = module.iam.jenkins_instance_profile_name
+  key_name             = var.jenkins_key_name
+  root_volume_size     = var.jenkins_root_volume_size
+}
