@@ -33,13 +33,27 @@ output "repository_url" {
   value       = module.ecr.repository_url
 }
 
-# Argo CD outputs
-output "argocd_server_instructions" {
-  description = "How to access Argo CD server"
-  value       = "Run: kubectl get svc argocd-server -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
-}
-
 output "github_actions_role_arn" {
   description = "ARN of the GitHub Actions IAM role"
   value       = module.iam.github_actions_role_arn
+}
+
+output "github_oidc_provider_arn" {
+  description = "ARN of the GitHub OIDC provider"
+  value       = module.iam.github_oidc_provider_arn
+}
+
+output "jenkins_role_arn" {
+  description = "ARN of the Jenkins IAM role"
+  value       = module.iam.jenkins_role_arn
+}
+
+output "jenkins_instance_profile_name" {
+  description = "Name of the Jenkins instance profile"
+  value       = module.iam.jenkins_instance_profile_name
+}
+
+output "eks_update_kubeconfig_command" {
+  description = "Command to update local kubeconfig for the prod cluster"
+  value       = "aws eks update-kubeconfig --region ${var.aws_region} --name ${module.eks.cluster_name}"
 }
