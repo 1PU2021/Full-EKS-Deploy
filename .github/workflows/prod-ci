@@ -1,0 +1,52 @@
+name: node-app CI
+
+on:
+  push:
+    branches:
+      - prod
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_REGION: us-east-2
+  ECR_REGISTRY: 942010118414.dkr.ecr.us-east-2.amazonaws.com
+  ECR_REPOSITORY: tc2-prod-node-app
+  APP_DIR: app
+
+jobs:
+  build-and-push:
+    name: Build And Push prod Image
+    runs-on: ubuntu-latest
+    environment: prod
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          role-session-name: github-actions-prod-ecr
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Log in to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Prepare image tags
+        id: prep
+        run: |
+          echo "image_uri=${ECR_REGISTRY}/${ECR_REPOSITORY}" >> "$GITHUB_OUTPUT"
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t "${{ steps.prep.outputs.image_uri }}:latest" \
+            "${APP_DIR}"
+
+      - name: Push Docker image to ECR
+        run: |
+          docker push "${{ steps.prep.outputs.image_uri }}:latest"
