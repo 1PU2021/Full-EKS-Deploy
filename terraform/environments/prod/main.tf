@@ -84,7 +84,7 @@ module "eks" {
   vpc_id             = module.vpc.vpc_id
   private_subnet_ids = module.vpc.private_subnet_ids
   eks_cluster_sg_id  = module.vpc.eks_cluster_sg_id
-  jenkins_role_arn   = module.iam.jenkins_role_arn
+  jenkins_role_arn   = module.iam.github_actions_role_arn
 
   node_desired_size = var.node_desired_size
   node_min_size     = var.node_min_size
@@ -104,6 +104,12 @@ module "iam" {
   environment_name   = var.environment_name
   eks_cluster_name   = var.cluster_name
 
+  enable_github_oidc = true
+
+  github_org         = "1PU2021"
+  github_repo        = "EKS-Full-Deploy"
+  github_branch      = "Prod"
+  github_environment = "Prod"
 }
 
 module "jenkins" {
