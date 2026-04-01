@@ -1,7 +1,7 @@
 aws_region        = "us-east-2"
 environment_name  = "prod"
-node_desired_size = 6
-node_min_size     = 6
+node_desired_size = 2
+node_min_size     = 1
 node_max_size     = 6
 enable_jenkins    = false
 

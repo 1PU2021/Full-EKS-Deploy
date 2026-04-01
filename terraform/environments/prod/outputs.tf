@@ -34,22 +34,6 @@ output "repository_url" {
 }
 
 # Argo CD outputs
-output "argocd_namespace" {
-  description = "Namespace where Argo CD is deployed"
-  value       = module.argocd.argocd_namespace
-}
-
-output "argocd_admin_username" {
-  description = "Argo CD admin username"
-  value       = module.argocd.argocd_admin_username
-}
-
-output "argocd_admin_password" {
-  description = "Argo CD initial admin password (run 'terraform output -raw argocd_admin_password' to view)"
-  value       = module.argocd.argocd_initial_admin_password
-  sensitive   = true
-}
-
 output "argocd_server_instructions" {
   description = "How to access Argo CD server"
   value       = "Run: kubectl get svc argocd-server -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'"

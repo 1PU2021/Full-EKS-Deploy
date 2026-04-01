@@ -84,9 +84,7 @@ module "eks" {
   vpc_id             = module.vpc.vpc_id
   private_subnet_ids = module.vpc.private_subnet_ids
   eks_cluster_sg_id  = module.vpc.eks_cluster_sg_id
-  jenkins_role_arn = module.iam.github_actions_role_arn
-  enable_cluster_admin_principal = true
-  node_instance_name = "${var.environment_name}-eks-node"
+  jenkins_role_arn   = module.iam.jenkins_role_arn
 
   node_desired_size = var.node_desired_size
   node_min_size     = var.node_min_size
@@ -101,30 +99,11 @@ module "ecr" {
   repository_name  = var.repository_name
 }
 
-# Argo CD for GitOps continuous delivery
-module "argocd" {
-  source = "../../modules/argocd"
-
-  environment_name = var.environment_name
-  cluster_name     = var.cluster_name
-  git_repo_url     = var.git_repo_url
-  git_branch       = var.git_branch
-
-  depends_on = [module.eks]
-}
 module "iam" {
   source = "../../modules/iam"
-
   environment_name   = var.environment_name
   eks_cluster_name   = var.cluster_name
 
-  enable_jenkins     = var.enable_jenkins
-  enable_github_oidc = true
-
-  github_org   = "1PU2021"
-  github_repo  = "Full-EKS-Deploy"
-  github_branch = "prod"
-  github_environment = "prod"
 }
 
 module "jenkins" {

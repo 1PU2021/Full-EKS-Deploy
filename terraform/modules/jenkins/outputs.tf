@@ -1,11 +1,11 @@
 output "instance_id" {
-  value = aws_instance.this.id
+  value = var.enable_jenkins ? aws_instance.this[0].id : null
 }
 
 output "public_ip" {
-  value = aws_instance.this.public_ip
+  value = var.enable_jenkins ? aws_instance.this[0].public_ip : null
 }
 
 output "public_dns" {
-  value = aws_instance.this.public_dns
+  value = var.enable_jenkins ? aws_instance.this[0].public_dns : null
 }
