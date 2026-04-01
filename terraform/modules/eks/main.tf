@@ -168,7 +168,7 @@ resource "aws_eks_node_group" "this" {
 
   launch_template {
     id      = aws_launch_template.eks_nodes.id
-    version = "$Latest"
+    version = "1"
   }
 
   depends_on = [
