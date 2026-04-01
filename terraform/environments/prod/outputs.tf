@@ -38,3 +38,8 @@ output "argocd_server_instructions" {
   description = "How to access Argo CD server"
   value       = "Run: kubectl get svc argocd-server -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
 }
+
+output "github_actions_role_arn" {
+  description = "ARN of the GitHub Actions IAM role"
+  value       = module.iam.github_actions_role_arn
+}
