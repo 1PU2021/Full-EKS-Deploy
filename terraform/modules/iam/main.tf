@@ -128,3 +128,10 @@ resource "aws_iam_role" "github_actions" {
     Name = "${var.environment_name}-github-actions-role"
   }
 }
+
+resource "aws_iam_role_policy_attachment" "github_actions_ecr_power_user" {
+  count = var.enable_github_oidc ? 1 : 0
+
+  role       = aws_iam_role.github_actions[0].name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser"
+}
