@@ -107,9 +107,9 @@ module "iam" {
   enable_github_oidc = true
 
   github_org         = "1PU2021"
-  github_repo        = "EKS-Full-Deploy"
-  github_branch      = "Prod"
-  github_environment = "Prod"
+  github_repo        = "Full-EKS-Deploy"
+  github_branch      = "prod"
+  github_environment = "prod"
 }
 
 module "jenkins" {
