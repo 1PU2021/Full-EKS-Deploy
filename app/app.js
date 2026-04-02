@@ -46,7 +46,6 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
   res.send("You are one Zoom Call away from changing your life forever.js");
-});
 
 app.get("/health", (req, res) => {
   res.json({ status: "UP" });
