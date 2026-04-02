@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("ou are one Zoom Call away from changing your life forever.js");
+  res.send("You are one Zoom Call away from changing your life forever.js");
 });
 
 app.get("/health", (req, res) => {
