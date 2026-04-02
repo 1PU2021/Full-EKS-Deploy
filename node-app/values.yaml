@@ -10,7 +10,7 @@ image:
   repository: 942010118414.dkr.ecr.us-east-2.amazonaws.com/tc2-prod-node-app
   # This sets the pull policy for images.
   pullPolicy: Always
-  # Overrides the image tag whose default is the chart appVersion.
+  # Overridden by prod CI on each build (immutable tag = Argo CD sync). Default for local helm test only.
   tag: "latest"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
